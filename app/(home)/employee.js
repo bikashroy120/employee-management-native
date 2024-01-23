@@ -3,15 +3,18 @@ import React, { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from "expo-router";
+import { base_url } from "../../utils/config";
 
 const employee = () => {
   const [employees, setEmployees] = useState();
+  const router = useRouter()
 
   useEffect(() => {
     const fetchEmployeeData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/employee"
+          `${base_url}/employee`
         );
         setEmployees(response.data);
       } catch (error) {
@@ -52,7 +55,7 @@ const employee = () => {
             <Ionicons name="search" size={20} color="black" />
             <TextInput style={{flex:1}} placeholder="Search"/>
             <View>
-                <Pressable>
+                <Pressable onPress={()=>router.push("/(home)/adddetails")}>
                     <AntDesign name="pluscircle" size={24} color="black" />
                 </Pressable>
             </View>
