@@ -72,8 +72,8 @@ const adddetails = () => {
             borderRadius: 5,
             marginTop: 3,
           }}
-          value={employeeName}
-          onChangeText={(text) => setEmployeeName(text)}
+          value={employeeId}
+          onChangeText={(text) => setEmployeeId(text)}
           placeholder="Enter Employee Id"
         />
       </View>
@@ -88,8 +88,8 @@ const adddetails = () => {
             borderRadius: 5,
             marginTop: 3,
           }}
-          value={employeeId}
-          onChangeText={(text) => setEmployeeId(text)}
+          value={employeeName}
+          onChangeText={(text) => setEmployeeName(text)}
           placeholder="Enter Employee Name"
         />
       </View>
