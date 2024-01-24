@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, Pressable } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Pressable, Alert } from "react-native";
 import React, { useState } from "react";
 import { TextInput } from "react-native-web";
 import { AntDesign } from "@expo/vector-icons";
@@ -30,7 +30,20 @@ const adddetails = () => {
         activeEmployee:true
       }
 
-      axios.post(`${base_url}/employee/create`)
+      axios.post(`${base_url}/employee/create`,data).then((response)=>{
+        Alert.alert("Registration Success")
+        setEmployeeId("")
+        setEmployeeName("");
+        setDateOfBirth("")
+        setDesignation("")
+        setJoiningDate("")
+        setSalary("")
+        setPhoneNumber("")
+        setAddress("")
+      }).catch((error)=>{
+        Alert.alert("Registration fail")
+        console.log(error)
+      })
   }
 
   return (
@@ -189,7 +202,7 @@ const adddetails = () => {
       </View>
 
       <View style={{marginTop:10}}>
-          <Pressable style={{padding:10,backgroundColor:"green",borderRadius:5,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <Pressable onPress={()=>handelSubmit()} style={{padding:10,backgroundColor:"green",borderRadius:5,flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
               <Text style={{color:"#fff",fontSize:16,fontWeight:600}}>Add Employee</Text>
           </Pressable>
       </View>
